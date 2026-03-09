@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react';
 import { Lead, LeadStatus } from '@/types';
 import { ChevronUp, ChevronDown, ChevronLeft, ChevronRight, Inbox } from 'lucide-react';
-import { API_BASE_URL } from '@/lib/api';
+
 
 interface LeadTableProps {
     leads: Lead[];
@@ -120,7 +120,7 @@ export default function LeadTable({ leads, onStatusChange }: LeadTableProps) {
         setUpdating(lead.id);
         try {
             const token = localStorage.getItem('admin_token') ?? '';
-            await fetch(`${API_BASE_URL}/api/leads/${lead.id}`, {
+            await fetch(`/api/leads/${lead.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

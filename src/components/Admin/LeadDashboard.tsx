@@ -7,7 +7,7 @@ import LeadCharts from './LeadCharts';
 import LeadFilterBar, { FilterValues } from './LeadFilterBar';
 import LeadTable from './LeadTable';
 import { RefreshCw, AlertCircle, Loader2 } from 'lucide-react';
-import { API_BASE_URL } from '@/lib/api';
+
 
 export default function LeadDashboard() {
     const [leads, setLeads] = useState<Lead[]>([]);
@@ -30,7 +30,7 @@ export default function LeadDashboard() {
             if (filters?.search) params.set('search', filters.search);
 
             const qs = params.toString();
-            const url = `${API_BASE_URL}/api/leads${qs ? `?${qs}` : ''}`;
+            const url = `/api/leads${qs ? `?${qs}` : ''}`;
 
             const res = await fetch(url, {
                 headers: { Authorization: `Bearer ${token}` },

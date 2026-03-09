@@ -3,7 +3,6 @@
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { Building2, Mail, Lock, AlertCircle, Loader2 } from 'lucide-react';
-import { API_BASE_URL } from '@/lib/api';
 
 export default function LoginPage() {
     const router = useRouter();
@@ -18,7 +17,7 @@ export default function LoginPage() {
         setLoading(true);
 
         try {
-            const res = await fetch(`${API_BASE_URL}/api/login`, {
+            const res = await fetch('/api/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),
