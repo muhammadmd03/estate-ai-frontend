@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 interface ChatInputProps {
     onSend: (message: string) => void;
     disabled?: boolean;
+    brandColor?: string;
 }
 
 const suggestions = [
@@ -16,7 +17,7 @@ const suggestions = [
     'Show me commercial offices in Chicago',
 ];
 
-export default function ChatInput({ onSend, disabled }: ChatInputProps) {
+export default function ChatInput({ onSend, disabled, brandColor }: ChatInputProps) {
     const [value, setValue] = useState('');
     const [showSuggestions, setShowSuggestions] = useState(false);
     const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -110,9 +111,15 @@ export default function ChatInput({ onSend, disabled }: ChatInputProps) {
                         className={cn(
                             'flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-xl transition-all duration-200',
                             value.trim() && !disabled
-                                ? 'bg-emerald-600 text-white shadow-md shadow-emerald-200 hover:bg-emerald-700 hover:scale-105 active:scale-95'
+                                ? 'text-white shadow-md hover:scale-105 active:scale-95'
                                 : 'bg-slate-200 text-slate-400 cursor-not-allowed'
                         )}
+                        style={value.trim() && !disabled && brandColor
+                            ? { backgroundColor: brandColor }
+                            : value.trim() && !disabled
+                                ? { backgroundColor: '#059669' } /* emerald-600 fallback */
+                                : undefined
+                        }
                     >
                         <Send className="w-4 h-4" />
                     </button>

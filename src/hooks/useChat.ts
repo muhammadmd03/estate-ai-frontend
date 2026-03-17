@@ -66,9 +66,10 @@ export function useChat() {
 
 
                 body: JSON.stringify({
-                    message: content.trim(),
+                    client_id: "client_001",
                     user_id: userId,
                     thread_id: threadId,
+                    message: content.trim(),
                 }),
             });
 

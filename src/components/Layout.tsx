@@ -70,6 +70,7 @@ export default function DashboardLayout() {
                 onNavChange={handleNavChange}
                 isOpen={sidebarOpen}
                 onClose={() => setSidebarOpen(false)}
+                onSend={sendMessage}
             />
 
             {/* Main area */}

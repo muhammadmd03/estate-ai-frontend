@@ -56,6 +56,14 @@ export interface AnalysisResult {
   loanAmount: number;
 }
 
+export interface WidgetConfig {
+  agency_name: string;
+  brand_color: string;
+  welcome_message: string;
+  widget_position?: string;
+  whatsapp_number?: string;
+}
+
 export interface FilterState {
   budgetMin: string;
   budgetMax: string;
